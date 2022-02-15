@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package statusChange;
+
+import "google/protobuf/timestamp.proto";
+
+option java_multiple_files = true;
+option java_package = "nyy.roar.jfl.poc.kafka.protobuf.uprn";
+option java_outer_classname = "UPRNStatusProtos";
+
+message StatusEvent {
+  string message_type__c = 1;
+  Payload payload__c = 2;
+  google.protobuf.Timestamp event_date__c = 3;
+  string test_string__c = 4;
+}
+
+message Payload {
+  string uprn = 1;
+  UPRNStatus uprnStatus = 2;
+  google.protobuf.Timestamp date1 = 3;
+
+  enum UPRNStatus {
+      START_ORDER_A = 0;
+      START_ORDER_B = 1;
+      START_ORDER_C = 2;
+      REGISTER_INTEREST_COMMITTED_BUILD_A = 3;
+      REGISTER_INTEREST_COMMITTED_BUILD_B = 4;
+      REGISTER_INTEREST_COMMITTED_BUILD_C = 5;
+      REGISTER_INTEREST_COMMITTED_BUILD = 6;
+      REGISTER_INTEREST_CONSTRUCTION_DELAY = 7;
+      INVITED_TO_CALL_IN = 8;
+      REGISTER_INTEREST_LIMITED_CAPACITY = 9;
+      REGISTER_INTEREST_ONPLAN_WITH_DATE = 10;
+      REGISTER_INTEREST_ONPLAN_WITHOUT_DATE = 11;
+      REGISTER_INTEREST_OFFPLAN = 12;
+  }
+
+
+
+}
